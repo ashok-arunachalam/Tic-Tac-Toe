@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Tik Tac Toe</title>
+ <link rel="icon" href="t.png" type="image/x-icon" >
+<style >
+
+#ap{
+	 margin: 50px 350px 5px 520px;
+	 font-family: Bookman Old Style ;
+     font-weight: bold;
+     color: white;
+     font-size: 3vw; 
+     display: flex;
+}
+#p1t{
+	
+width: 250px;  
+height: 250px;  
+top: 250px;
+left: 50px;
+font-weight: bold;
+     color: brown;
+     font-size: 2.0vw; 
+position: absolute;
+}
+#p2t{
+	
+width: 250px;  
+height: 250px;  
+top: 350px;
+left: 50px;
+font-weight: bold;
+     color: brown;
+     font-size: 2.0vw; 
+position: absolute;
+}
+
+#p1i{
+width: 50px;  
+height: 50px;  
+top: 275px;
+left: 250px;
+position: absolute;
+
+}
+#p2i{
+width: 50px;  
+height: 50px;  
+top: 375px;
+left: 250px;
+position: absolute;
+
+}
+
+#cnt{
+width: 250px;  
+height: 50px;  
+top: 500px;
+left: 100px;
+font-family: Bookman Old Style ;
+     font-weight: bold;
+     color: white;
+     font-size: 2.0vw;
+position: absolute;
+
+}
+
+ #er{
+         margin: 500px 350px 5px 450px;
+        color: rgb(255, 15, 15);
+        font-family: Bookman Old Style ;
+        font-weight: bold;
+        padding: 10px;
+      	text-shadow: 0 0 13px white;
+        border-radius: 15px 50px;
+        font-size: 4vw;
+        -webkit-box-reflect : below 1px linear-gradient(transparent , #0004);
+		line-height: 0.70em;
+		outline: none;
+		display: flex;
+     animation: animate 3s linear infinite;
+    }
+    @keyframes animate{
+	0%{
+		color: white;
+		
+	}
+	50%,100%{
+		color: red;
+		text-shadow: 0 0 10px white,
+		            
+
+	}
+}
+
+body {
+                 background-image: url('b1.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+
+.vl1{
+	 border-left: 6px solid red;
+  height: 290px;
+  position: absolute;
+  left: 42%;
+  margin-left: -3px;
+  top: 200px;		
+}
+.vl2{
+	 border-left: 6px solid red;
+  height: 290px;
+  position: absolute;
+  left: 49%;
+  margin-left: -3px;
+  top: 200px;		
+}
+
+.hl1{
+	border-left: 350px solid red;
+	height: 5.5px;
+	position: absolute;
+	left: 34%;
+	margin-left: -3px;
+	top: 290px;
+}
+
+.hl2{
+	border-left: 350px solid red;
+	height: 5.5px;
+	position: absolute;
+	left: 34%;
+	margin-left: -3px;
+	top: 390px;
+}
+#n1 {  
+width: 80px;  
+height: 80px;  
+top: 200px;
+left: 540px;
+position: absolute;
+ opacity: 0.3;
+ 
+}  
+#n2 {  
+width: 80px;  
+height: 80px;   	
+top: 200px;
+left: 770px;
+position: absolute;
+opacity: 0.3; 
+} 
+#n3 {  
+width: 80px;  
+height: 80px;  
+top: 305px;
+left: 540px;
+position: absolute;
+opacity: 0.3; 
+} 
+
+#n4 {  
+width: 80px;  
+height: 80px;  
+top: 200px;
+left: 660px;
+position: absolute;
+opacity: 0.3;
+} 
+
+
+#n5 {  
+width: 80px;  
+height: 80px;  
+top: 305px;
+left: 660px;
+position: absolute;
+opacity: 0.3;
+}
+
+#n6 {  
+width: 80px;  
+height: 80px;  
+top: 305px;
+left: 770px;
+position: absolute;
+opacity: 0.3;
+}
+
+#n7 {  
+width: 80px;  
+height: 80px;  
+top: 405px;
+left: 660px;
+position: absolute;
+opacity: 0.3;
+}
+
+#n8 {  
+width: 80px;  
+height: 80px;  
+top: 405px;
+left: 540px;
+position: absolute;
+opacity: 0.3;
+}
+
+#n9 {  
+width: 80px;  
+height: 80px;  
+top: 405px;
+left: 770px;
+position: absolute;
+opacity: 0.3;
+}
+
+</style>
+<script type="text/javascript">
+
+</script>
+<script>
+    var p=0;
+   	var t1o=0;
+   	var t1e=0;
+   	var t2o=0;
+   	var t2e=0;
+   	var t3o=0;
+   	var t3e=0;
+   	var c1o=0;
+   	var c1e=0;
+   	var c2o=0;
+   	var c2e=0;
+   	var c3o=0;
+   	var c3e=0;
+   	var d1o=0;
+   	var d1e=0;
+   	var d2o=0;
+   	var d2e=0;
+   	var f=30;
+   	function c1() {
+   		if(p%2==0){
+		//alert("hi pa");
+		if(document.getElementById("n1").src.match("Color-Green.png")){
+			document.getElementById("n1").src = "x.png";
+			document.getElementById("n1").style.opacity = "1";
+			document.getElementById("cnt").innerHTML = "Now Player--2";
+			p++;
+			t1o++;
+			if(t1o==3&&f==30){
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+				f=1;
+			}
+			c1o++;
+			if(c1o==3&&f==30){
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+				f=1;
+			}
+			d1o++;
+			if(d1o==3&&f==30){
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+				f=1;
+			}
+			if(p==9&&f==30){
+				document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+			}
+		}
+		
+   		}
+   		else{
+   			//alert(" namba jeichitom mara");
+   			if(document.getElementById("n1").src.match("Color-Green.png")){
+   				document.getElementById("n1").src = "o.png";
+   				document.getElementById("n1").style.opacity = "1";
+   				document.getElementById("cnt").innerHTML = "Now Player--1";
+   				p++;
+   				t1e++;
+   				if(t1e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				c1e++;
+   				if(c1e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				d1e++;
+   				if(d1e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				if(p==9&&f==30){
+   					document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+   				}
+   			}
+   			
+   		}
+	}
+   	function c2() {
+   		if(p%2==0){
+		//alert("hi pa");
+		if(document.getElementById("n2").src.match("Color-Green.png")){
+			document.getElementById("n2").src = "x.png";
+			document.getElementById("n2").style.opacity = "1";
+			document.getElementById("cnt").innerHTML = "Now Player--2";
+			p++;
+			t1o++;
+			if(t1o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			c3o++;
+			if(c3o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			d2o++;
+			if(d2o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			if(p==9&&f==30){
+				document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+			}
+		}
+		
+   		}
+   		else{
+   			//alert(" namba jeichitom mara");
+   			if(document.getElementById("n2").src.match("Color-Green.png")){
+   				document.getElementById("n2").src = "o.png";
+   				document.getElementById("n2").style.opacity = "1";
+   				document.getElementById("cnt").innerHTML = "Now Player--1";
+   				p++;
+   				t1e++;
+   				if(t1e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				c3e++;
+   				if(c3e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				d2e++;
+   				if(d2e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				if(p==9&&f==30){
+   					document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+   				}
+   			}
+   			
+   		}
+	}
+   	
+   	function c3() {
+   		if(p%2==0){
+		//alert("hi pa");
+		if(document.getElementById("n3").src.match("Color-Green.png")){
+			document.getElementById("n3").src = "x.png";
+			document.getElementById("n3").style.opacity = "1";
+			document.getElementById("cnt").innerHTML = "Now Player--2";
+			p++;
+			t2o++;
+			if(t2o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			c1o++;
+			if(c1o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			if(p==9&&f==30){
+				document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+			}
+		}
+		
+   		}
+   		else{
+   			//alert(" namba jeichitom mara");
+   			if(document.getElementById("n3").src.match("Color-Green.png")){
+   				document.getElementById("n3").src = "o.png";
+   				document.getElementById("n3").style.opacity = "1";
+   				document.getElementById("cnt").innerHTML = "Now Player--1";
+   				p++;
+   				t2e++;
+   				if(t2e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				c1e++;
+   				if(c1e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				if(p==9&&f==30){
+   					document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+   				}
+   			}
+   			
+   		}
+	}
+   	
+   	function c4() {
+   		if(p%2==0){
+		//alert("hi pa");
+		if(document.getElementById("n4").src.match("Color-Green.png")){
+			document.getElementById("n4").src = "x.png";
+			document.getElementById("n4").style.opacity = "1";
+			document.getElementById("cnt").innerHTML = "Now Player--2";
+			p++;
+			t1o++;
+			if(t1o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			c2o++;
+			if(c2o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			if(p==9&&f==30){
+				document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+			}
+		}
+		
+   		}
+   		else{
+   			//alert(" namba jeichitom mara");
+   			if(document.getElementById("n4").src.match("Color-Green.png")){
+   				document.getElementById("n4").src = "o.png";
+   				document.getElementById("n4").style.opacity = "1";
+   				document.getElementById("cnt").innerHTML = "Now Player--1";
+   				p++;
+   				t1e++;
+   				if(t1e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				c2e++;
+   				if(c2e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				if(p==9&&f==30){
+   					document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+   				}
+   			}
+   			
+   		}
+	}
+   	
+   	function c5() {
+   		if(p%2==0){
+		//alert("hi pa");
+		if(document.getElementById("n5").src.match("Color-Green.png")){
+			document.getElementById("n5").src = "x.png";
+			document.getElementById("n5").style.opacity = "1";
+			document.getElementById("cnt").innerHTML = "Now Player--2";
+			p++;
+			t2o++;
+			if(t2o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			c2o++;
+			if(c2o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			d1o++;
+			if(d1o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			d2o++;
+			if(d2o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			if(p==9&&f==30){
+				document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+			}
+			
+		}
+		
+   		}
+   		else{
+   			//alert(" namba jeichitom mara");
+   			if(document.getElementById("n5").src.match("Color-Green.png")){
+   				document.getElementById("n5").src = "o.png";
+   				document.getElementById("n5").style.opacity = "1";
+   				document.getElementById("cnt").innerHTML = "Now Player--1";
+   				p++;
+   				t2e++;
+   				if(t2e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				c2e++;
+   				if(c2e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				d1e++;
+   				if(d1e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				d2e++;
+   				if(d2e==3){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				if(p==9&&f==30){
+   					document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+   				}
+   			}
+   			
+   		}
+	}
+   	
+   	function c6() {
+   		if(p%2==0){
+		//alert("hi pa");
+		if(document.getElementById("n6").src.match("Color-Green.png")){
+			document.getElementById("n6").src = "x.png";
+			document.getElementById("n6").style.opacity = "1";
+			document.getElementById("cnt").innerHTML = "Now Player--2";
+			p++;
+			t2o++;
+			if(t2o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			c3o++;
+			if(c3o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			if(p==9&&f==30){
+				document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+			}
+		}
+		
+   		}
+   		else{
+   			//alert(" namba jeichitom mara");
+   			if(document.getElementById("n6").src.match("Color-Green.png")){
+   				document.getElementById("n6").src = "o.png";
+   				document.getElementById("n6").style.opacity = "1";
+   				document.getElementById("cnt").innerHTML = "Now Player--1";
+   				p++;
+   				t2e++;
+   				if(t2e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				c3e++;
+   				if(c3e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				if(p==9&&f==30){
+   					document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+   				}
+   			}
+   			
+   		}
+	}
+   	
+   	function c7() {
+   		if(p%2==0){
+		//alert("hi pa");
+		if(document.getElementById("n7").src.match("Color-Green.png")){
+			document.getElementById("n7").src = "x.png";
+			document.getElementById("n7").style.opacity = "1";
+			document.getElementById("cnt").innerHTML = "Now Player--2";
+			p++;
+			t3o++;
+			if(t3o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			c2o++;
+			if(c2o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			if(p==9&&f==30){
+				document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+			}
+			
+		}
+		
+   		}
+   		else{
+   			//alert(" namba jeichitom mara");
+   			if(document.getElementById("n7").src.match("Color-Green.png")){
+   				document.getElementById("n7").src = "o.png";
+   				document.getElementById("n7").style.opacity = "1";
+   				document.getElementById("cnt").innerHTML = "Now Player--1";
+   				p++;
+   				t3e++;
+   				if(t3e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				c2e++;
+   				if(c2e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				if(p==9&&f==30){
+   					document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+   				}
+   			}
+   			
+   		}
+	}
+   	
+   	function c8() {
+   		if(p%2==0){
+		//alert("hi pa");
+		if(document.getElementById("n8").src.match("Color-Green.png")){
+			document.getElementById("n8").src = "x.png";
+			document.getElementById("n8").style.opacity = "1";
+			document.getElementById("cnt").innerHTML = "Now Player--2";
+			p++;
+			t3o++;
+			if(t3o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			c1o++;
+			if(c1o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			d2o++;
+			if(d2o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			if(p==9&&f==30){
+				document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+			}
+		}
+		
+   		}
+   		else{
+   			//alert(" namba jeichitom mara");
+   			if(document.getElementById("n8").src.match("Color-Green.png")){
+   				document.getElementById("n8").src = "o.png";
+   				document.getElementById("n8").style.opacity = "1";
+   				document.getElementById("cnt").innerHTML = "Now Player--1";
+   				p++;
+   				t3e++;
+   				if(t3e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				c1e++;
+   				if(c1e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				d2e++;
+   				if(d2e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				if(p==9&&f==30){
+   					document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+   				}
+   			}
+   			
+   		}
+	}
+   	
+   	function c9() {
+   		if(p%2==0){
+		//alert("hi pa");
+		if(document.getElementById("n9").src.match("Color-Green.png")){
+			document.getElementById("n9").src = "x.png";
+			document.getElementById("n9").style.opacity = "1";
+			document.getElementById("cnt").innerHTML = "Now Player--2";
+			p++;
+			t3o++;
+			if(t3o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			c3o++;
+			if(c3o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			d1o++;
+			if(d1o==3&&f==30){f=1;
+				document.getElementById("er").innerHTML = "Player-1 won!!!";
+			}
+			if(p==9&&f==30){
+				document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+			}
+		}
+		
+   		}
+   		else{
+   			//alert(" namba jeichitom mara");
+   			if(document.getElementById("n9").src.match("Color-Green.png")){
+   				document.getElementById("n9").src = "o.png";
+   				document.getElementById("n9").style.opacity = "1";
+   				document.getElementById("cnt").innerHTML = "Now Player--1";
+   				p++;
+   				t3e++;
+   				if(t3e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				c3e++;
+   				if(c3e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				d1e++;
+   				if(d1e==3&&f==30){f=1;
+   					document.getElementById("er").innerHTML = "Player-2 won!!!";
+   				}
+   				if(p==9&&f==30){
+   					document.getElementById("er").innerHTML = "MATCH DRAW---:)";
+   				}
+   			}
+   			
+   		}
+	}
+   	
+</script>
+
+</head>
+<body >
+<h1 id="ap">TIK TAC TOE</h1>
+<p id="p1t">PLAYER-1--:)</p>
+<p id="p2t">PLAYER-2--:)</p>
+<img id = "p1i" src= "x.png"/> 
+<img id = "p2i" src= "o.png"/> 
+<h1 id="er"></h1>
+<p id="cnt">Now Player--1</p>
+<div class="vl1"></div>
+<div class="vl2"></div>
+<div class="vl3"></div>
+<div class="hl1"></div>
+<div class="hl2"></div>
+<img id = "n1" src= "Color-Green.png" onclick="c1()" />  
+<img id = "n2" src= "Color-Green.png" onclick="c2()" /> 
+<img id = "n3" src= "Color-Green.png" onclick="c3()" /> 
+<img id = "n4" src= "Color-Green.png" onclick="c4()" /> 
+<img id = "n5" src= "Color-Green.png" onclick="c5()" /> 
+<img id = "n6" src= "Color-Green.png" onclick="c6()" /> 
+<img id = "n7" src= "Color-Green.png" onclick="c7()" /> 
+<img id = "n8" src= "Color-Green.png" onclick="c8()" /> 
+<img id = "n9" src= "Color-Green.png" onclick="c9()" /> 
+
+</body>
+</html>
